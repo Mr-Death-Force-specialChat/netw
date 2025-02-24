@@ -1,7 +1,7 @@
 OBJ=obj
 BIN=bin
-TARGET=bin/netw.so
-TARGET_STATIC=bin/netw.a
+TARGET=$(BIN)/libnetw.so
+TARGET_STATIC=$(BIN)/libnetw.a
 FLAGS_C=-fPIC -O3 -std=c++20
 FLAGS_C_STATIC=-O3 -std=c++20
 FLAGS_L=-shared
@@ -31,7 +31,7 @@ leak_check:
 build:
 	@$(TIME) --format=$(TIME_FORMATTING) make build_s2 --no-print-directory
 
-build_static:
+static:
 	@$(TIME) --format=$(TIME_FORMATTING) make build_s2_static --no-print-directory
 
 build_s2: $(TARGET)
