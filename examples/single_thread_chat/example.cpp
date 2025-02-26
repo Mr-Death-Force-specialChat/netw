@@ -28,7 +28,10 @@ struct netw_server_messages : netw_server
 		}
 		if (message == "QUIT")
 		{
+			uint16_t size = htons(4);
+			send(client_sock, &size, 2, 0);
 			send(client_sock, "QUIT", 4, 0);
+			send(client_sock, &size, 2, 0);
 			send(client_sock, "QUIT", 4, 0);
 		}
 	}
@@ -80,7 +83,10 @@ struct netw_client_messages : netw_client
 		}
 		if (message == "QUIT")
 		{
+			uint16_t size = htons(4);
+			send(sock, &size, 2, 0);
 			send(sock, "QUIT", 4, 0);
+			send(sock, &size, 2, 0);
 			send(sock, "QUIT", 4, 0);
 		}
 	}
